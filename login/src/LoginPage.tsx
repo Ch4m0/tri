@@ -1,7 +1,17 @@
 import React from 'react'
 
+import { useStore } from 'store/store'
+
 const LoginPage = () => {
-  return <div>This is Login</div>
+  const { count, clear } = useStore()
+
+  return (
+    <div>
+      This is Login
+      {count}
+      <button onClick={clear}>Clear from Login</button>
+    </div>
+  )
 }
 
 export default LoginPage

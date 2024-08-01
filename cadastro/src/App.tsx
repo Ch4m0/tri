@@ -2,11 +2,11 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import './index.css'
-import LoginPage from './Home'
+import HomePage from './HomePage'
 
 const App = () => (
   <Routes>
-    <Route path="/" element={<LoginPage />} />
+    <Route path="/" element={<HomePage />} />
   </Routes>
 )
 

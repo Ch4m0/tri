@@ -1,0 +1,17 @@
+{
+    "name": "tribanco-microfrontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "pkg:install": "cd cadastro && yarn install && cd ../login && yarn install && cd ../store && yarn install && cd ../main && yarn install",
+      "dev": "concurrently \"cd cadastro && yarn start:live\" \"cd login && yarn start:live\" \"cd main && yarn start:live\" \"cd store && yarn start:live\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "concurrently": "^8.2.1"
+    }
+  }
+  

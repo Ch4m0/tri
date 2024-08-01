@@ -64,7 +64,9 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: 'cadastro',
       filename: 'remoteEntry.js',
-      remotes: {},
+      remotes: {
+        store: 'store@http://localhost:8080/remoteEntry.js',
+      },
       exposes: {
         './Header': './src/Header.jsx',
         './App': './src/App.tsx',

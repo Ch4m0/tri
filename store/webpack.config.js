@@ -9,7 +9,7 @@ const printCompilationMessage = require('./compilation.config.js')
 
 module.exports = (_, argv) => ({
   output: {
-    publicPath: 'http://localhost:3002/',
+    publicPath: 'http://localhost:8080/',
   },
 
   resolve: {
@@ -17,7 +17,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 3002,
+    port: 8080,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, 'src')],
     onListening: function (devServer) {
@@ -62,14 +62,12 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'main',
+      name: 'store',
       filename: 'remoteEntry.js',
-      remotes: {
-        login: 'login@http://localhost:3000/remoteEntry.js',
-        cadastro: 'cadastro@http://localhost:3001/remoteEntry.js',
-        store: 'store@http://localhost:8080/remoteEntry.js',
+      remotes: {},
+      exposes: {
+        './store': './src/store',
       },
-      exposes: {},
       shared: {
         ...deps,
         react: {
@@ -79,10 +77,6 @@ module.exports = (_, argv) => ({
         'react-dom': {
           singleton: true,
           requiredVersion: deps['react-dom'],
-        },
-        'react-router-dom': {
-          singleton: true,
-          requiredVersion: deps['react-router-dom'],
         },
       },
     }),
