@@ -6,12 +6,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 
 const RemoteLoginApp = React.lazy(() => import('login/App'))
+const RemoteCadastroApp = React.lazy(() => import('cadastro/App'))
 
 const App = () => (
   <div className="container">
-    <h1>MAIn</h1>
+    <h1>CONTAINER</h1>
     <Routes>
-      <Route path="/" element={<h1>HOME</h1>}></Route>
+      {/* Cadastro APP */}
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<div>Loading...</div>}>
+            <RemoteCadastroApp />
+          </Suspense>
+        }
+      ></Route>
+
+      {/* Login APP */}
       <Route
         path="/login/*"
         element={
@@ -20,10 +31,12 @@ const App = () => (
           </Suspense>
         }
       ></Route>
+
       <Route path="*" element={<h1>404</h1>}></Route>
     </Routes>
   </div>
 )
+
 const rootElement = document.getElementById('app')
 if (!rootElement) throw new Error('Failed to find the root element')
 

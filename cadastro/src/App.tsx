@@ -1,19 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { Route, Routes } from 'react-router-dom'
 
 import './index.css'
+import LoginPage from './Home'
 
 const App = () => (
-  <div className="container">
-    <div>Name: cadastro</div>
-    <div>Framework: react</div>
-    <div>Language: TypeScript</div>
-    <div>CSS: Empty CSS</div>
-  </div>
+  <Routes>
+    <Route path="/" element={<LoginPage />} />
+  </Routes>
 )
-const rootElement = document.getElementById('app')
-if (!rootElement) throw new Error('Failed to find the root element')
 
-const root = ReactDOM.createRoot(rootElement as HTMLElement)
-
-root.render(<App />)
+export default App
